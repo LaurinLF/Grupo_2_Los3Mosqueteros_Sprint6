@@ -11,6 +11,26 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Products.hasMany(models.Categories,{
+        as: 'categories',
+        foreignKey: 'id_category'
+      })
+
+      Products.hasMany(models.Colors, {
+        as: 'colors',
+        foreignKey: 'id_color'
+      })
+
+      Products.belongsTo(models.Images, {
+        as: 'images',
+        foreignKey: 'id_product'
+      })
+
+      Products.belongsToMany(models.Users, {
+        as: 'users',
+        thorugh: 'products_users',
+        foreignKey: 'id_product'
+      })
     }
   }
   Products.init({
@@ -22,7 +42,8 @@ module.exports = (sequelize, DataTypes) => {
     measures: DataTypes.STRING,
     discount: DataTypes.INTEGER,
     stock: DataTypes.INTEGER,
-    id_category: DataTypes.INTEGER
+    id_category: DataTypes.INTEGER,
+    id_color: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Products',

@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Users.belongsToMany(models.Users, {
+        as: 'users',
+        through: 'products_users',
+        foreingKey: 'id_user'
+      })
     }
   }
   Users.init({

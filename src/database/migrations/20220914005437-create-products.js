@@ -8,9 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_product: {
-        type: Sequelize.INTEGER
-      },
       name: {
         type: Sequelize.STRING
       },
@@ -33,7 +30,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_category: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Categories',
+          key: 'id'
+        }
+      },
+      id_color: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Colors',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
