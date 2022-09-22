@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Colors.belognsTo(models.Products, {
-        as: 'products',
+      Colors.hasMany(models.Products, {
+        //as: 'products',
         foreignKey: 'id_color'
       })
     }
