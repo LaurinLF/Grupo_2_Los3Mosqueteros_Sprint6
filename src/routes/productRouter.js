@@ -4,7 +4,7 @@ const router = express.Router();
 const productController = require("../controllers/productController")
 
 const multerMiddleware = require('../middleware/middlemulter');
-const upload = multerMiddleware('products', 'Product');
+const upload = multerMiddleware('/images/products', 'Product');
 const authMiddleware = require("../middleware/authMiddleware");
 const productCreateValidation = require('../middleware/productCreateValidation');
 const productEditValidation = require('../middleware/productEditValidation');

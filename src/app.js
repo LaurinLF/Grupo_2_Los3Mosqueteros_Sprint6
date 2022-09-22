@@ -7,7 +7,7 @@ const cookies = require('cookie-parser');
 
 const userLoggedMiddleware = require('./middleware/userLoggedMiddleware');
 
-app.use(express.static('public'));
+app.use(express.static(path.resolve(__dirname,'../public')));
 app.use(express.urlencoded({ extended: false })); // para poder trabajar con formularios
 app.use(express.json()); // para poder trabajar con información que llegue en formato json
 app.use(methodOverride('_method'));  // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
@@ -23,17 +23,17 @@ app.use(userLoggedMiddleware);
 
 
 
-app.set('views', path.resolve(__dirname, './views')); 
+app.set('views', path.resolve(__dirname, 'views')); 
 app.set('view engine', 'ejs');
 
-const mainRouter = require("./routes/mainRouter")
+const mainRouter = require("./routes/mainRouter.js")
 app.use("/" ,mainRouter)
 
-const userRouter = require("./routes/userRouter")
+const userRouter = require("./routes/userRouter.js")
 app.use("/users", userRouter)
 
 // Products
-const productRouter = require("./routes/productRouter")
+const productRouter = require("./routes/productRouter.js")
 app.use("/products", productRouter)
 
 const port = process.env.PORT || 3030;

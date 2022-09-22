@@ -5,9 +5,9 @@ const path = require('path');
 const universalModel = function (name) {
     console.log('entre al modelo de Mercado')
     console.log(name)
-    console.log(path.resolve(__dirname, '../data/', `${name}.json`))
+    console.log(path.resolve(__dirname, '../database/', `${name}.json`))
     return {
-        tablePath: path.resolve(__dirname, '../data/', `${name}.json`),
+        tablePath: path.resolve(__dirname, '../database/', `${name}.json`),
 
         // Leo el archivo Json y lo transformo en Array de objeto literal     
         readFile: function () {
@@ -81,37 +81,37 @@ const universalModel = function (name) {
             this.writeFile(updatedRows);
         },
 
-        table: function () {
-            let rows = this.readFile();
-            console.log(" --- filtro los visitados")
+    //     table: function () {
+    //         let rows = this.readFile();
+    //         console.log(" --- filtro los visitados")
             
-            const table = rows.filter(i => i.category == 'table')
-            console.log(" --- ESTOY ----------------------")
-       //     console.log(visitados)
-            return table 
+    //         const table = rows.filter(i => i.category == 'table')
+    //         console.log(" --- ESTOY ----------------------")
+    //    //     console.log(visitados)
+    //         return table 
 
-        },
-        visited: function () {
-            let rows = this.readFile();
-            console.log(" --- filtro los visitados")
+    //     },
+    //     visited: function () {
+    //         let rows = this.readFile();
+    //         console.log(" --- filtro los visitados")
             
-            const visitados = rows.filter(i => i.category == 'visited')
-            console.log(" --- ESTOY ----------------------")
-       //     console.log(visitados)
-            return visitados 
+    //         const visitados = rows.filter(i => i.category == 'visited')
+    //         console.log(" --- ESTOY ----------------------")
+    //    //     console.log(visitados)
+    //         return visitados 
 
-        },
+    //     },
 
-        inSale: function () {
-            let rows = this.readFile();
-            console.log(" --- filtro los que están para venta")
+    //     inSale: function () {
+    //         let rows = this.readFile();
+    //         console.log(" --- filtro los que están para venta")
   
-            const enVenta = rows.filter(i => i.category == 'in-sale')
-            console.log(" --- ESTOY EN VENTA--------------------")
-     //       console.log(enVenta)
-            return enVenta
+    //         const enVenta = rows.filter(i => i.category == 'in-sale')
+    //         console.log(" --- ESTOY EN VENTA--------------------")
+    //  //       console.log(enVenta)
+    //         return enVenta
 
-        },
+    //     },
 
         //findFirstByField: function(text){
         //    let rows = this.findAll();
